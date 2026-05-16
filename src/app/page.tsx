@@ -4,6 +4,7 @@ import { useSession, signOut } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
+import DemoQuiz from "@/components/DemoQuiz"
 
 type Question = {
   id: string
@@ -32,12 +33,8 @@ export default function Home() {
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    if (status === "unauthenticated") {
-      router.push("/login")
-    } else if (status === "authenticated") {
-      if (session?.user?.status === "PENDING") {
-        router.push("/pending")
-      }
+    if (status === "authenticated" && session?.user?.status === "PENDING") {
+      router.push("/pending")
     }
   }, [status, session, router])
 
@@ -136,22 +133,53 @@ export default function Home() {
   }
 
   if (status === "loading") return <div className="p-8 text-center">Se încarcă...</div>
-  if (!session) return null
 
+  // Landing Page for Unauthenticated Users
+  if (status === "unauthenticated") {
+      return (
+          <div className="min-h-screen bg-gray-50 flex flex-col">
+              <header className="bg-white shadow">
+                  <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                      <h1 className="text-3xl font-bold text-gray-900">Platformă Chestionare</h1>
+                      <div className="flex space-x-4">
+                          <Link href="/login" className="text-gray-600 hover:text-gray-900 font-medium px-4 py-2">Autentificare</Link>
+                          <Link href="/register" className="bg-blue-600 text-white hover:bg-blue-700 font-medium px-4 py-2 rounded-md transition-colors">Înregistrare</Link>
+                      </div>
+                  </div>
+              </header>
+              <main className="flex-grow flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8">
+                  <div className="text-center max-w-2xl mx-auto">
+                      <h2 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl mb-6">
+                          Testează-ți <span className="text-blue-600">Cunoștințele</span>
+                      </h2>
+                      <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl mb-8">
+                          Pregătește-te eficient cu teste generate dinamic. Ai la dispoziție istoricul rezultatelor, rapoarte detaliate și algoritmi care pun accent pe capitolele pe care trebuie să le mai repeți.
+                      </p>
+                  </div>
+
+                  <div className="w-full">
+                      <DemoQuiz />
+                  </div>
+              </main>
+          </div>
+      )
+  }
+
+  // Dashboard for Authenticated Users
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="bg-white rounded-lg shadow px-6 py-4 mb-6 flex items-center justify-between">
+        <div className="bg-white rounded-lg shadow px-6 py-4 mb-6 flex items-center justify-between flex-wrap gap-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Platformă Chestionare</h1>
-            <p className="text-sm text-gray-500">Salut, {session.user.name || session.user.email}!</p>
+            <p className="text-sm text-gray-500">Salut, {session?.user?.name || session?.user?.email}!</p>
           </div>
-          <div className="flex space-x-4 items-center">
+          <div className="flex space-x-4 items-center flex-wrap gap-2">
             <Link href="/history" className="text-blue-600 hover:text-blue-800 font-medium text-sm">
                 Istoric Teste
             </Link>
-            {session.user.role === "ADMIN" && (
+            {session?.user?.role === "ADMIN" && (
               <Link href="/admin" className="text-blue-600 hover:text-blue-800 font-medium text-sm">
                 Panou Admin
               </Link>
@@ -170,7 +198,7 @@ export default function Home() {
 
         {!loading && questions.length === 0 && !isSubmitting && (
           <div className="bg-white rounded-lg shadow px-6 py-12 text-center">
-            <h2 className="text-xl font-medium text-gray-900 mb-4">Ești gata să începi un nou test?</h2>
+            <h2 className="text-xl font-medium text-gray-900 mb-4">Ești gata să începi un nou test complet?</h2>
             <button
               onClick={startQuiz}
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
