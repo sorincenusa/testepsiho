@@ -35,7 +35,7 @@ export const sendPaymentInstructionsEmail = async (userEmail: string) => {
 
         <div style="background-color: #f3f4f6; padding: 15px; border-radius: 5px; margin: 20px 0;">
           <h3 style="margin-top: 0;">Detalii de plată</h3>
-          <p><strong>Cost acces:</strong> 49 RON (plată unică)</p>
+          <p><strong>Cost acces:</strong> 00 lei (plată unică)</p>
           <ul style="list-style-type: none; padding-left: 0;">
             <li><strong>Nume Beneficiar:</strong> SC Nume Firma SRL</li>
             <li><strong>IBAN:</strong> ROXX XXXX XXXX XXXX XXXX XXXX</li>

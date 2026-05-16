@@ -24,7 +24,7 @@ export default function PendingApproval() {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
              <div className="flex items-center justify-center mb-6">
                  <span className="text-2xl font-bold text-gray-900 mr-2">Cost acces:</span>
-                 <span className="text-3xl font-extrabold text-blue-700">49 RON</span>
+                 <span className="text-3xl font-extrabold text-blue-700">00 lei</span>
                  <span className="text-gray-500 ml-2 font-medium">(plată unică)</span>
              </div>
 
