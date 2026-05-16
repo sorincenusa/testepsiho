@@ -129,7 +129,7 @@ export default function DemoQuiz() {
   if (questions.length > 0) {
       return (
           <div className="space-y-6 max-w-4xl mx-auto mt-8">
-            <div className="bg-white rounded-lg shadow px-6 py-4 mb-6 sticky top-0 z-10 flex justify-between items-center">
+            <div className="bg-white rounded-lg shadow px-6 py-4 mb-6 sticky top-0 z-10 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 text-center sm:text-left">
                <span className="font-semibold text-gray-700 bg-gray-100 px-3 py-1 rounded">Răspunsuri: {Object.keys(answers).length} / {questions.length}</span>
                <span className="font-mono font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded border border-blue-200">Mod Demo</span>
             </div>
@@ -165,7 +165,7 @@ export default function DemoQuiz() {
               </div>
             )})}
 
-            <div className="flex justify-end items-center bg-white p-4 rounded-lg shadow">
+            <div className="flex flex-col sm:flex-row justify-end items-center space-y-4 sm:space-y-0 bg-white text-center sm:text-left w-full p-4 rounded-lg shadow">
                  <button
                      onClick={submitQuiz}
                      className="px-8 py-3 bg-green-600 text-white text-lg rounded-md font-bold shadow-md hover:bg-green-700 animate-pulse"

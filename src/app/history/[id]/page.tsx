@@ -47,14 +47,14 @@ export default async function TestResultPage({ params }: { params: { id: string 
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="bg-white rounded-lg shadow px-6 py-4 mb-6 flex items-center justify-between print:hidden">
+        <div className="bg-white rounded-lg shadow px-6 py-4 mb-6 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 text-center sm:text-left print:hidden">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Rezultate Test</h1>
             <p className="text-sm text-gray-500">
                 Data: {new Date(testSession.createdAt).toLocaleString('ro-RO')}
             </p>
           </div>
-          <div className="flex space-x-4 items-center">
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 items-center">
             <Link href="/" className="text-blue-600 hover:text-blue-800 font-medium text-sm">
                 Înapoi la meniu
             </Link>

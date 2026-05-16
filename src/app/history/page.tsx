@@ -20,7 +20,7 @@ export default async function HistoryPage() {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="bg-white rounded-lg shadow px-6 py-4 mb-6 flex items-center justify-between">
+        <div className="bg-white rounded-lg shadow px-6 py-4 mb-6 flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 text-center sm:text-left">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Istoric Teste</h1>
             <p className="text-sm text-gray-500">{session.user.name || session.user.email}</p>
@@ -45,7 +45,7 @@ export default async function HistoryPage() {
                         return (
                             <li key={s.id} className="hover:bg-gray-50 transition-colors">
                                 <Link href={`/history/${s.id}`} className="block px-6 py-4">
-                                    <div className="flex items-center justify-between">
+                                    <div className="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 text-center sm:text-left">
                                         <div className="flex flex-col">
                                             <span className="text-sm font-medium text-gray-900">
                                                 Test susținut la {new Date(s.createdAt).toLocaleDateString('ro-RO')}

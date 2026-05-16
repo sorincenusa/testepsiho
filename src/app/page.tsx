@@ -139,9 +139,9 @@ export default function Home() {
       return (
           <div className="min-h-screen bg-gray-50 flex flex-col">
               <header className="bg-white shadow">
-                  <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                  <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
                       <h1 className="text-3xl font-bold text-gray-900">Platformă Chestionare</h1>
-                      <div className="flex space-x-4">
+                      <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                           <Link href="/login" className="text-gray-600 hover:text-gray-900 font-medium px-4 py-2">Autentificare</Link>
                           <Link href="/register" className="bg-blue-600 text-white hover:bg-blue-700 font-medium px-4 py-2 rounded-md transition-colors">Înregistrare</Link>
                       </div>
@@ -175,7 +175,7 @@ export default function Home() {
             <h1 className="text-2xl font-bold text-gray-900">Platformă Chestionare</h1>
             <p className="text-sm text-gray-500">Salut, {session?.user?.name || session?.user?.email}!</p>
           </div>
-          <div className="flex space-x-4 items-center flex-wrap gap-2">
+          <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4 items-center flex-wrap gap-2">
             <Link href="/history" className="text-blue-600 hover:text-blue-800 font-medium text-sm">
                 Istoric Teste
             </Link>
@@ -215,7 +215,7 @@ export default function Home() {
         {questions.length > 0 && !isSubmitting && (
           <div className="space-y-6">
             <div className="bg-white rounded-lg shadow px-6 py-4 mb-6 sticky top-0 z-10 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
-               <div className="flex space-x-4">
+               <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                   <span className="font-semibold text-gray-700 bg-gray-100 px-3 py-1 rounded">Răspunsuri: {Object.keys(answers).length} / {questions.length}</span>
                   <span className="font-mono font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded border border-blue-200">Timp: {formatTime(secondsElapsed)}</span>
                </div>
@@ -254,7 +254,7 @@ export default function Home() {
               </div>
             )})}
 
-            <div className="flex justify-between items-center bg-white p-4 rounded-lg shadow">
+            <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 text-center sm:text-left bg-white p-4 rounded-lg shadow">
                 <button
                    onClick={prevPage}
                    disabled={currentPage === 0}
