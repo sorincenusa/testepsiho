@@ -83,7 +83,7 @@ export default async function TestResultPage({ params }: { params: { id: string 
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {testSession.answers.map((ans, i) => (
-                    <tr key={ans.id} className={ans.isCorrect ? "bg-green-50/30 print:bg-green-50" : "bg-red-50/30 print:bg-red-50"}>
+                    <tr key={ans.id} className={ans.isCorrect ? "bg-green-100 print:bg-green-100" : "bg-red-100 print:bg-red-100"}>
                       <td className="px-4 py-4 text-sm font-medium text-gray-500">{i + 1}</td>
                       <td className="px-4 py-4 text-sm text-gray-900">
                         <span className="font-semibold text-xs text-gray-500 block mb-1">{ans.question.chapter}</span>

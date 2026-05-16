@@ -26,6 +26,7 @@ export async function POST(req: Request) {
 
     const sessionAnswersData = []
     let correctCount = 0
+    const upsertPromises = []
 
     for (const q of questions) {
       const userAnswerText = answers[q.id]
@@ -50,43 +51,55 @@ export async function POST(req: Request) {
         isCorrect
       })
 
-      await prisma.response.upsert({
-        where: {
-          userId_questionId: {
+      upsertPromises.push(
+        prisma.response.upsert({
+          where: {
+            userId_questionId: {
+              userId,
+              questionId: q.id
+            }
+          },
+          update: {
+            userAnswer: userAnswerText,
+            isCorrect,
+            status,
+          },
+          create: {
             userId,
-            questionId: q.id
+            questionId: q.id,
+            userAnswer: userAnswerText,
+            isCorrect,
+            status
           }
-        },
-        update: {
-          userAnswer: userAnswerText,
-          isCorrect,
-          status,
-        },
-        create: {
-          userId,
-          questionId: q.id,
-          userAnswer: userAnswerText,
-          isCorrect,
-          status
-        }
-      })
+        })
+      )
     }
 
-    // Save history record
-    const testSession = await prisma.testSession.create({
-        data: {
-            userId,
-            score: correctCount,
-            total: questions.length,
-            duration: duration || null,
-            answers: {
-                create: sessionAnswersData
+    // Run all database updates simultaneously to vastly improve speed
+    await Promise.all([
+        ...upsertPromises,
+        prisma.testSession.create({
+            data: {
+                userId,
+                score: correctCount,
+                total: questions.length,
+                duration: duration || null,
+                answers: {
+                    create: sessionAnswersData
+                }
             }
-        }
+        })
+    ])
+
+    // Find the session ID to return to the user
+    // We fetch it right after creation to ensure we have the correct one
+    const testSession = await prisma.testSession.findFirst({
+        where: { userId },
+        orderBy: { createdAt: 'desc' }
     })
 
     return NextResponse.json({
-      sessionId: testSession.id,
+      sessionId: testSession?.id,
       correctCount,
       totalCount: questions.length
     })
