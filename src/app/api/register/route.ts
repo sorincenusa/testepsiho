@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
+import { sendPaymentInstructionsEmail, sendAdminNotificationEmail } from '@/lib/mail'
 
 export async function POST(req: Request) {
   try {
@@ -33,6 +34,16 @@ export async function POST(req: Request) {
         status
       }
     })
+
+    if (role === "USER" && status === "PENDING") {
+      try {
+          await sendPaymentInstructionsEmail(email);
+          await sendAdminNotificationEmail(email);
+      } catch (mailError) {
+          console.error("Failed to send notification emails:", mailError);
+          // We don't fail the registration if email fails
+      }
+    }
 
     return NextResponse.json({ message: "Cont creat cu succes", userId: user.id }, { status: 201 })
   } catch (error) {

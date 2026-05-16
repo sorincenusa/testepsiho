@@ -1,19 +1,72 @@
+"use client"
+
 import Link from "next/link"
+import { useSession } from "next-auth/react"
 
 export default function PendingApproval() {
+  const { data: session } = useSession()
+  const userEmail = session?.user?.email || "adresa_ta_de_email@exemplu.com"
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow text-center">
-        <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-          În așteptarea aprobării
-        </h2>
-        <p className="mt-2 text-sm text-gray-600">
-          Contul tău a fost creat cu succes, dar trebuie să fie aprobat de un administrator înainte de a te putea conecta și a accesa chestionarele.
-        </p>
-        <div className="mt-6">
-          <Link href="/login" className="text-blue-600 hover:text-blue-500 font-medium">
-            Înapoi la pagina de autentificare
-          </Link>
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-2xl">
+        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 border-t-4 border-blue-600">
+
+          <div className="text-center mb-8">
+             <h2 className="text-3xl font-extrabold text-gray-900 mb-2">
+               Activează-ți Accesul Complet
+             </h2>
+             <p className="text-lg text-gray-600">
+               Pentru a debloca setul complet de 45 de întrebări, cronometrul și istoricul detaliat, este necesară achitarea licenței.
+             </p>
+          </div>
+
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+             <div className="flex items-center justify-center mb-6">
+                 <span className="text-2xl font-bold text-gray-900 mr-2">Cost acces:</span>
+                 <span className="text-3xl font-extrabold text-blue-700">49 RON</span>
+                 <span className="text-gray-500 ml-2 font-medium">(plată unică)</span>
+             </div>
+
+             <div className="bg-white rounded p-6 shadow-sm">
+                <h3 className="text-lg font-bold text-gray-800 border-b pb-2 mb-4">Te rugăm să efectuezi transferul în următorul cont:</h3>
+
+                <ul className="space-y-4 text-gray-700">
+                   <li className="flex flex-col sm:flex-row sm:items-center">
+                      <span className="font-semibold w-40 text-gray-900">Nume Beneficiar:</span>
+                      <span className="font-mono bg-gray-100 px-2 py-1 rounded select-all">SC Nume Firma SRL</span>
+                   </li>
+                   <li className="flex flex-col sm:flex-row sm:items-center">
+                      <span className="font-semibold w-40 text-gray-900">IBAN:</span>
+                      <span className="font-mono font-bold text-lg bg-gray-100 px-2 py-1 rounded select-all tracking-wider">ROXX XXXX XXXX XXXX XXXX XXXX</span>
+                   </li>
+                   <li className="flex flex-col sm:flex-row sm:items-center">
+                      <span className="font-semibold w-40 text-gray-900">Bancă:</span>
+                      <span>Nume Bancă</span>
+                   </li>
+                   <li className="flex flex-col sm:flex-row sm:items-center pt-2 border-t border-dashed">
+                      <span className="font-bold text-red-600 w-40">Detalii plată / Referință (Obligatoriu):</span>
+                      <span className="font-mono font-bold text-red-700 bg-red-50 px-2 py-1 rounded select-all">{userEmail}</span>
+                   </li>
+                </ul>
+             </div>
+          </div>
+
+          <div className="bg-gray-50 rounded p-6 text-sm text-gray-600 border border-gray-200">
+              <p className="mb-2">
+                 <span className="font-semibold text-gray-800">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și îți va activa contul.
+              </p>
+              <p>
+                 Procesarea se face de regulă în aceeași zi, imediat ce plata devine vizibilă. Vei primi un email de confirmare când contul tău devine activ.
+              </p>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link href="/" className="text-blue-600 hover:text-blue-800 font-medium transition-colors">
+              &larr; Înapoi la pagina principală
+            </Link>
+          </div>
+
         </div>
       </div>
     </div>
