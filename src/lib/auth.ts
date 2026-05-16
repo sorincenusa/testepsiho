@@ -11,9 +11,17 @@ export const authOptions: AuthOptions = {
         email: { label: "Email", type: "email", placeholder: "email@exemplu.com" },
         password: { label: "Parola", type: "password" }
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Date de conectare lipsă")
+        }
+
+        const forwardedFor = req.headers ? req.headers["x-forwarded-for"] : null;
+        let userIp = "unknown";
+        if (forwardedFor) {
+            userIp = Array.isArray(forwardedFor) ? forwardedFor[0] : forwardedFor.split(',')[0].trim();
+        } else if (req.headers && req.headers["x-real-ip"]) {
+            userIp = Array.isArray(req.headers["x-real-ip"]) ? req.headers["x-real-ip"][0] : req.headers["x-real-ip"];
         }
 
         const user = await prisma.user.findUnique({
@@ -22,6 +30,20 @@ export const authOptions: AuthOptions = {
 
         if (!user) {
           throw new Error("Utilizator negăsit")
+        }
+
+        if (userIp !== "unknown") {
+          let updatedIps = user.knownIps || [];
+          if (!updatedIps.includes(userIp)) {
+            if (updatedIps.length >= 2) {
+              throw new Error("Contul a atins limita maximă de 2 dispozitive/rețele (IP-uri) diferite. Contactează administratorul.");
+            }
+            updatedIps.push(userIp);
+            await prisma.user.update({
+              where: { id: user.id },
+              data: { knownIps: updatedIps }
+            });
+          }
         }
 
         const isPasswordValid = await bcrypt.compare(credentials.password, user.password)

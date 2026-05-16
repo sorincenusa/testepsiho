@@ -17,7 +17,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ro">
-      <body className={inter.className}>
+      <body className={inter.className + " select-none"}>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              document.addEventListener('contextmenu', event => event.preventDefault());
+              document.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C' )) {
+                  e.preventDefault();
+                }
+              });
+            `
+          }}
+        />
+
         <Providers>
           {children}
         </Providers>

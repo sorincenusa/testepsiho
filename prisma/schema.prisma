@@ -9,30 +9,33 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  password  String
-  role      String   @default("USER") // USER or ADMIN
-  status    String   @default("PENDING") // PENDING, APPROVED, REJECTED
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  responses Response[]
+  id           String        @id @default(cuid())
+  email        String        @unique
+  password     String
+  role         String        @default("USER") // USER or ADMIN
+  status       String        @default("PENDING") // PENDING, APPROVED, REJECTED
+  name         String?
+  knownIps     String[]      // Track up to 2 IPs
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  responses    Response[]
+  testSessions TestSession[]
 }
 
 model Question {
-  id        String   @id @default(cuid())
-  chapter   String
-  text      String
-  optionA   String
-  optionB   String
-  optionC   String
-  optionD   String
-  optionE   String
-  correct   String   // A, B, C, D, or E
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  responses Response[]
+  id             String          @id @default(cuid())
+  chapter        String
+  text           String
+  optionA        String
+  optionB        String
+  optionC        String
+  optionD        String
+  optionE        String
+  correct        String          // A, B, C, D, or E
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  responses      Response[]
+  sessionAnswers SessionAnswer[]
 }
 
 model Response {
@@ -48,4 +51,25 @@ model Response {
   question   Question @relation(fields: [questionId], references: [id])
 
   @@unique([userId, questionId])
+}
+
+model TestSession {
+  id        String          @id @default(cuid())
+  userId    String
+  score     Int
+  total     Int
+  duration  Int?            // Duration in seconds
+  createdAt DateTime        @default(now())
+  user      User            @relation(fields: [userId], references: [id])
+  answers   SessionAnswer[]
+}
+
+model SessionAnswer {
+  id            String      @id @default(cuid())
+  sessionId     String
+  questionId    String
+  userAnswer    String
+  isCorrect     Boolean
+  session       TestSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  question      Question    @relation(fields: [questionId], references: [id])
 }

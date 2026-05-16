@@ -12,7 +12,7 @@ export async function POST(req: Request) {
   const userId = session.user.id
 
   try {
-    const { answers } = await req.json()
+    const { answers, duration } = await req.json()
 
     if (!answers || Object.keys(answers).length === 0) {
       return NextResponse.json({ message: "Niciun răspuns trimis" }, { status: 400 })
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
       where: { id: { in: questionIds } }
     })
 
-    const results = []
+    const sessionAnswersData = []
     let correctCount = 0
 
     for (const q of questions) {
@@ -44,12 +44,9 @@ export async function POST(req: Request) {
 
       if (isCorrect) correctCount++
 
-      results.push({
+      sessionAnswersData.push({
         questionId: q.id,
-        chapter: q.chapter,
-        text: q.text,
         userAnswer: userAnswerText,
-        correctAnswer: correctAnswerText,
         isCorrect
       })
 
@@ -75,10 +72,23 @@ export async function POST(req: Request) {
       })
     }
 
+    // Save history record
+    const testSession = await prisma.testSession.create({
+        data: {
+            userId,
+            score: correctCount,
+            total: questions.length,
+            duration: duration || null,
+            answers: {
+                create: sessionAnswersData
+            }
+        }
+    })
+
     return NextResponse.json({
+      sessionId: testSession.id,
       correctCount,
-      totalCount: questions.length,
-      results
+      totalCount: questions.length
     })
 
   } catch (error) {
