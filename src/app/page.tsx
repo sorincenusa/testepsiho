@@ -161,8 +161,8 @@ Datele tale sunt confidențiale și nu vor fi vândute, distribuite sau transmis
 Luăm măsuri rezonabile pentru protejarea și securizarea informațiilor transmise prin intermediul acestui site. Datele vor fi șterse în cursul lunii iulie.
 Ai dreptul de a solicita oricând modificarea sau ștergerea datelor tale de contact printr-o cerere transmisă la adresa de email contact@psiho-hub.info</small>
                       </p>
-                      <p className="mt-0 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl mb-3">
-                        IMPORTANT: Platforma de evaluare poate fi accesată de pe un singur IP
+                      <p className="mt-0 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl mb-3">
+                        <small>IMPORTANT: Platforma de evaluare poate fi accesată de pe un singur IP</small>
                       </p>
                   </div>
 
