@@ -34,19 +34,19 @@ export default function PendingApproval() {
                 <ul className="space-y-4 text-gray-700">
                    <li className="flex flex-col sm:flex-row sm:items-center">
                       <span className="font-semibold w-40 text-gray-900">Nume Beneficiar:</span>
-                      <span className="font-mono bg-gray-100 px-2 py-1 rounded select-all">SC Nume Firma SRL</span>
+                      <span className="font-mono bg-gray-100 px-2 py-1 rounded select-all">Ciofu Maria Alexandra PFA</span>
                    </li>
                    <li className="flex flex-col sm:flex-row sm:items-center">
                       <span className="font-semibold w-40 text-gray-900">IBAN:</span>
-                      <span className="font-mono font-bold text-lg bg-gray-100 px-2 py-1 rounded select-all tracking-wider">ROXX XXXX XXXX XXXX XXXX XXXX</span>
+                      <span className="font-mono font-bold text-lg bg-gray-100 px-2 py-1 rounded select-all tracking-wider">RO60 RZBR 0000 0600 1051 9448</span>
                    </li>
                    <li className="flex flex-col sm:flex-row sm:items-center">
                       <span className="font-semibold w-40 text-gray-900">Bancă:</span>
-                      <span>Nume Bancă</span>
+                      <span>Raiffeisen Bank</span>
                    </li>
                    <li className="flex flex-col sm:flex-row sm:items-center pt-2 border-t border-dashed">
                       <span className="font-bold text-red-600 w-40">Detalii plată / Referință (Obligatoriu):</span>
-                      <span className="font-mono font-bold text-red-700 bg-red-50 px-2 py-1 rounded select-all">{userEmail}</span>
+                      <span className="font-mono font-bold text-red-700 bg-red-50 px-2 py-1 rounded select-all">platformă testare</span>
                    </li>
                 </ul>
              </div>
@@ -54,10 +54,13 @@ export default function PendingApproval() {
 
           <div className="bg-gray-50 rounded p-6 text-sm text-gray-600 border border-gray-200">
               <p className="mb-2">
-                 <span className="font-semibold text-gray-800">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și îți va activa contul.
+                 <span className="font-semibold text-gray-800">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și va activa contul.
               </p>
               <p>
-                 Procesarea se face de regulă în aceeași zi, imediat ce plata devine vizibilă. Vei primi un email de confirmare când contul tău devine activ.
+                 Procesarea se face de regulă în 24 de ore, imediat ce plata devine vizibilă. Vei primi un email de confirmare când contul tău devine activ.
+              </p>
+              <p>
+                La detalii plată, în momentul transferului, vă rugăm să menționați detalii pentru factură.
               </p>
           </div>
 
