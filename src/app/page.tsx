@@ -156,7 +156,7 @@ export default function Home() {
                           Pregătește-te eficient cu teste generate dinamic. Ai la dispoziție istoricul rezultatelor, rapoarte detaliate și algoritmi care pun accent pe capitolele pe care trebuie să le mai repeți.
                       </p>
                       <p className="mt-0 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl mb-1">
-                        <small>Prin înregistrare, ești de acord cu prelucrarea datelor furnizate (nume și adresă de email) exclusiv în scopul accesării platformei de verificare cunoștințe.
+                        <small>Prin înregistrare, ești de acord cu prelucrarea datelor furnizate (nume și adresă de email) exclusiv în scopul accesării platformei de evaluare cunoștințe.
 Datele tale sunt confidențiale și nu vor fi vândute, distribuite sau transmise către terți fără acordul tău, cu excepția situațiilor prevăzute de lege.
 Luăm măsuri rezonabile pentru protejarea și securizarea informațiilor transmise prin intermediul acestui site. Datele vor fi șterse în cursul lunii iulie.
 Ai dreptul de a solicita oricând modificarea sau ștergerea datelor tale de contact printr-o cerere transmisă la adresa de email contact@psiho-hub.info</small>
