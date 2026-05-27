@@ -26,7 +26,7 @@ export default function PendingApproval() {
                  <span className="font-semibold"><sup>*</sup>IMPORTANT:</span> Numele Prenumele trebuie să coincidă cu Nume Prenume furnizate la crearea contului.
               </p>
               <p className="text-md text-gray-800">
-                <span className="font-semibold">Date facturare:</span> La detalii plată, în momentul transferului, vă rugăm să menționați detalii pentru factură.
+                <span className="font-semibold">Date facturare:</span> Pentru eliberarea facturii trimiteți pe adresa de email maria.alexandra.ciofu@gmail.com detaliile necesare.
               </p>
           </div>
 
