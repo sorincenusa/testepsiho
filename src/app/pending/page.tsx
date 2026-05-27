@@ -25,7 +25,7 @@ export default function PendingApproval() {
               <p className="mb-2 text-md text-gray-800">
                  <span className="font-semibold">*IMPORTANT:</span> Numele Prenumele trebuie să coincidă cu Nume Prenume furnizate la crearea contului.
               </p>
-              <p class="text-md text-gray-800">
+              <p className="text-md text-gray-800">
                 <span className="font-semibold">Date facturare:</span> La detalii plată, în momentul transferului, vă rugăm să menționați detalii pentru factură.
               </p>
           </div>
