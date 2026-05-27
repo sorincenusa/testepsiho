@@ -19,6 +19,9 @@ export default function PendingApproval() {
              <p className="text-lg text-gray-600">
                Pentru a debloca setul complet de 45 de întrebări, cronometrul și istoricul detaliat, este necesară achitarea licenței.
              </p>
+              <p className="text-lg text-gray-900">
+               Te rog să citești cu atenție textul din baza paginii.
+             </p>
           </div>
 
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
@@ -46,21 +49,21 @@ export default function PendingApproval() {
                    </li>
                    <li className="flex flex-col sm:flex-row sm:items-center pt-2 border-t border-dashed">
                       <span className="font-bold text-red-600 w-40">Detalii plată / Referință (Obligatoriu):</span>
-                      <span className="font-mono font-bold text-red-700 bg-red-50 px-2 py-1 rounded select-all">platformă testare</span>
+                      <span className="font-mono font-bold text-red-700 bg-red-50 px-2 py-1 rounded select-all">platformă testare Nume Prenume*</span>
                    </li>
                 </ul>
              </div>
           </div>
 
-          <div className="bg-gray-50 rounded p-6 text-sm text-gray-600 border border-gray-200">
+          <div className="bg-gray-50 rounded p-6 text-sm text-gray-900 border border-gray-200">
               <p className="mb-2">
-                 <span className="font-semibold text-gray-800">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și va activa contul.
+                 <span className="font-semibold">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și va activa contul. Procesarea se face de regulă în 24 de ore, imediat ce plata devine vizibilă. Vei primi un email de confirmare când contul tău devine activ.
               </p>
               <p>
-                 Procesarea se face de regulă în 24 de ore, imediat ce plata devine vizibilă. Vei primi un email de confirmare când contul tău devine activ.
+                 <span className="font-semibold">*IMPORTANT:</span> Numele și Prenumele trebuie să coincidă cu Nume Prenume furnizate la crearea contului
               </p>
               <p>
-                La detalii plată, în momentul transferului, vă rugăm să menționați detalii pentru factură.
+                <span className="font-semibold">Date FACTURARE:</span> La detalii plată, în momentul transferului, vă rugăm să menționați detalii pentru factură.
               </p>
           </div>
 
