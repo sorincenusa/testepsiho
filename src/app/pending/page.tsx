@@ -17,10 +17,10 @@ export default function PendingApproval() {
                Activează-ți Accesul Complet
              </h2>
              <p className="text-lg text-gray-600 mb-4">
-               Pentru a debloca setul complet de 45 de întrebări, cronometrul și istoricul detaliat, este necesară achitarea licenței.<
+               Pentru a debloca setul complet de 45 de întrebări, cronometrul și istoricul detaliat, este necesară achitarea licenței.
              </p>
               <p className="mb-2 text-md text-gray-800">
-                 <span className="font-semibold">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și va activa contul. Procesarea se face de regulă în 24 de ore, imediat ce plata devine vizibilă. Dacă nu poți accesa contul în 24 de ore, te rog să ne scrii pe adresa maria.alexandra.ciofu@gmail.com
+                 <span className="font-semibold">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și va activa contul. Procesarea se face de regulă în 24 de ore, imediat ce plata devine vizibilă. Dacă nu poți accesa contul în 24 de ore, te rog să ne scrii pe adresa de email maria.alexandra.ciofu@gmail.com
               </p>
               <p className="mb-2 text-md text-gray-800">
                  <span className="font-semibold">*IMPORTANT:</span> Numele Prenumele trebuie să coincidă cu Nume Prenume furnizate la crearea contului.
