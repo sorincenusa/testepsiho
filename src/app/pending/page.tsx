@@ -16,20 +16,17 @@ export default function PendingApproval() {
              <h2 className="text-3xl font-extrabold text-gray-900 mb-2">
                Activează-ți Accesul Complet
              </h2>
-             <p className="text-lg text-gray-600">
-               Pentru a debloca setul complet de 45 de întrebări, cronometrul și istoricul detaliat, este necesară achitarea licenței.
-             </p>
-              <p className="text-lg text-gray-900">
-               Te rog să citești cu atenție textul din baza paginii.
+             <p className="text-lg text-gray-600 mb-4">
+               <small>Pentru a debloca setul complet de 45 de întrebări, cronometrul și istoricul detaliat, este necesară achitarea licenței.</small>
              </p>
               <p className="mb-2">
-                 <span className="font-semibold">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și va activa contul. Procesarea se face de regulă în 24 de ore, imediat ce plata devine vizibilă. Vei primi un email de confirmare când contul tău devine activ.
+                 <small><span className="font-semibold">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și va activa contul. Procesarea se face de regulă în 24 de ore, imediat ce plata devine vizibilă. Vei primi un email de confirmare când contul tău devine activ.</small>
               </p>
               <p className="mb-2">
-                 <span className="font-semibold"><sup>*</sup>IMPORTANT:</span> Numele și Prenumele trebuie să coincidă cu Nume Prenume furnizate la crearea contului
+                 <small><span className="font-semibold">*IMPORTANT:</span> Numele și Prenumele trebuie să coincidă cu Nume Prenume furnizate la crearea contului.</small>
               </p>
               <p>
-                <span className="font-semibold">Date FACTURARE:</span> La detalii plată, în momentul transferului, vă rugăm să menționați detalii pentru factură.
+                <small><span className="font-semibold">Date FACTURARE:</span> La detalii plată, în momentul transferului, vă rugăm să menționați detalii pentru factură.</small>
               </p>
           </div>
 
