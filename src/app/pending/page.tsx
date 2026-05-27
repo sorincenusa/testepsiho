@@ -23,7 +23,7 @@ export default function PendingApproval() {
                  <span className="font-semibold">Pasul următor:</span> După efectuarea transferului, echipa noastră va verifica tranzacția și va activa contul. Procesarea se face de regulă în 24 de ore, imediat ce plata devine vizibilă. Dacă nu poți accesa contul în 24 de ore, te rog să ne scrii pe adresa de email maria.alexandra.ciofu@gmail.com
               </p>
               <p className="mb-2 text-md text-gray-800">
-                 <span className="font-semibold">*IMPORTANT:</span> Numele Prenumele trebuie să coincidă cu Nume Prenume furnizate la crearea contului.
+                 <span className="font-semibold"><sup>*</sup>IMPORTANT:</span> Numele Prenumele trebuie să coincidă cu Nume Prenume furnizate la crearea contului.
               </p>
               <p className="text-md text-gray-800">
                 <span className="font-semibold">Date facturare:</span> La detalii plată, în momentul transferului, vă rugăm să menționați detalii pentru factură.
